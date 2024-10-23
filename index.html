@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css" asp-append-version="true" /> -->
+    <title>BENNESBY</title>
+</head>
+
+<style>
+    /* ===== Google Font Import - Poformsins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('BACKGROUND\ BENNESBY.png');
+  background-repeat: no-repeat;
+  /* Evitar repetição da imagem */
+  background-position: center center;
+  /* Posiciona a imagem no centro */
+  background-attachment: fixed;
+  /* Mantém a imagem fixa enquanto a página rola */
+  background-size: 100%;
+  /* Redimensiona a imagem para 30% do tamanho do corpo */
+  position: relative;
+  z-index: -1;
+  /* Move a imagem para o fundo */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  /* Aumenta o valor do box-shadow para cobrir a linha amarela chat */
+  transition: background-color 5000s ease-in-out 0s;
+  /* Ajusta a transição para evitar a mudança repentina de cor */
+}
+
+.container {
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 0 20px;
+  transform: scale(0.9);
+  /* Adicionando uma escala de 80% */
+
+}
+
+.container .forms {
+  display: flex;
+  align-items: center;
+  height: 630px;
+  width: 200%;
+  transition: height 0.2s ease;
+}
+
+
+.container .form {
+  width: 50%;
+  padding: 30px;
+  background-color: #fff;
+  /* transition: margin-left 0.18s ease; */
+}
+
+.container.active .login {
+  margin-left: -50%;
+  opacity: 0;
+  /* transition: margin-left 0.18s ease, opacity 0.15s ease; */
+}
+
+.container .signup {
+  opacity: 0;
+  /* transition: opacity 0.09s ease; */
+}
+
+.container.active .signup {
+  opacity: 1;
+  /* transition: opacity 0.2s ease; */
+}
+
+.container.active .forms {
+  height: 650px;
+}
+
+.container .form .title {
+  position: relative;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.form .title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-color: #2d5980;
+  border-radius: 25px;
+}
+
+.form .input-field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.input-field input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-bottom: 2px solid #ccc;
+  transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) {
+  border-bottom-color: #2d5980;
+}
+
+.input-field i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 23px;
+  transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid)~i {
+  color: #2d5980;
+}
+
+.input-field i.icon {
+  left: 0;
+}
+
+.input-field i.showHidePw {
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.form .checkbox-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.checkbox-text .checkbox-content {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-content input {
+  margin-right: 10px;
+  accent-color: #4070f4;
+}
+
+.form .text {
+  color: #333;
+  font-size: 14px;
+}
+
+.form a.text {
+  color: #4070f4;
+  text-decoration: none;
+}
+
+.form a:hover {
+  text-decoration: underline;
+}
+
+.form .button {
+  margin-top: 35px;
+}
+
+.form .button input {
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  background-color: #4070f4;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button input:hover {
+  background-color: #265df2;
+}
+
+.form .login-signup {
+  margin-top: 30px;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    transform: none;
+  }
+}
+
+.cyberpunk-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #076799;
+  border-radius: 5px;
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.cyberpunk-checkbox:before {
+  content: "";
+  background-color: #076799;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.cyberpunk-checkbox:checked:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cyberpunk-checkbox-label {
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.cookie-card {
+  max-width: 50%;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1); 
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actions {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.accept {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  background-color: #076799;
+  border-color: #076799;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  color: #fff;
+  padding: 0.625rem 2rem;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .cookie-card {
+    max-width: 95%;
+  }
+}
+</style>
+
+<body>
+
+    <div class="container shadow">
+        <div class="forms">
+            <div class="form login">
+                <img src="logo-bol.png" class="img-fluid title" alt="Imagem">
+                <form method="post">
+                    <div class="input-field">
+                        <input type="text" id="id" name="id" placeholder="Digite seu Login ou CPF" required
+                            autocomplete="new-text">
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="senha" name="senha" class="password" placeholder="Digite sua Senha"
+                            required autocomplete="new-password">
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="checkbox" class="cyberpunk-checkbox" id="lembrarCredenciais"
+                                name="lembrarCredenciais" value="true">
+                            <label for="lembrarCredenciais" class="text" style="margin-bottom: 3px;">Lembre de
+                                mim</label>
+                        </div>
+
+                        <a class="text">Esqueceu sua senha?</a>
+                    </div>
+                    <div class="input-field button">
+                        <button class="btn btn-block" type="submit"
+                            style="background-color: #2d5980; color: white;">Entrar</button>
+                    </div>
+                </form>
+                <div class="login-signup">
+                    <span class="text">Não tem cadastro?
+                        <a href="#" class="text signup-link">Cadastrar-se</a>
+                    </span>
+                </div>
+            </div>
+            <!-- Registration Form -->
+            <div class="form signup">
+                <span class="title">Registrar</span>
+                <form method="post" autocomplete="off">
+                    <div class="input-field">
+                        <input type="text" id="codigo" name="codigo" placeholder="Digite seu CPF" required>
+                        <i class="uil uil-credit-card cpf-icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="email" id="email" name="email" placeholder="Digite seu E-mail" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="email" id="confirmaEmail" name="confirmaEmail" placeholder="Confirme seu E-mail"
+                            required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="senha" name="senha" class="password" placeholder="Digite sua senha"
+                            required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+
+                    <div class="input-field button">
+                        <button class="btn btn-block" type="submit"
+                            style="background-color: #2d5980; color: white;">Cadastrar</button>
+                    </div>
+                </form>
+                <div class="login-signup">
+                    <span class="text">Já possuo uma conta
+                        <a href="#" class="text login-link">Login</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="fixed-bottom">
+        <div class="cookie-card text-center" id="cookieCard" style="opacity: 0; display: none;">
+            <span class="title">🍪 Aviso de cookies</span>
+            <p class="description">Este site usa cookies para fornecer a você a melhor e mais relevante experiência de
+                usuário.</p>
+            <div class="actions">
+                <button id="acceptButton" type="button" class="accept">Entendi</button>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<!-- <script src="index.js" asp-append-version="true"></script> -->
+ <script>
+    const container = document.querySelector(".container"),
+    pwShowHide = document.querySelectorAll(".showHidePw"),
+    pwFields = document.querySelectorAll(".password"),
+    signUp = document.querySelector(".signup-link"),
+    login = document.querySelector(".login-link");
+
+//   js code to show/hide password and change icon
+pwShowHide.forEach(eyeIcon => {
+    eyeIcon.addEventListener("click", () => {
+        pwFields.forEach(pwField => {
+            if (pwField.type === "password") {
+                pwField.type = "text";
+
+                pwShowHide.forEach(icon => {
+                    icon.classList.replace("uil-eye-slash", "uil-eye");
+                })
+            } else {
+                pwField.type = "password";
+
+                pwShowHide.forEach(icon => {
+                    icon.classList.replace("uil-eye", "uil-eye-slash");
+                })
+            }
+        })
+    })
+})
+
+// js code to appear signup and login form
+signUp.addEventListener("click", () => {
+    container.classList.add("active");
+});
+login.addEventListener("click", () => {
+    container.classList.remove("active");
+});
+
+// Aceitação de cookies
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function hideCookieNotice() {
+    document.getElementById('cookieCard').style.display = 'none';
+}
+
+function fadeIn(element, duration) {
+    var opacity = 0;
+    var interval = 50;
+    var gap = interval / duration;
+
+    function updateOpacity() {
+        opacity += gap;
+        element.style.opacity = opacity;
+
+        if (opacity >= 1) {
+            clearInterval(fadeInterval);
+        }
+    }
+
+    element.style.display = 'block';
+    var fadeInterval = setInterval(updateOpacity, interval);
+}
+
+setTimeout(function () {
+    var acceptedCookie = getCookie('acceptedCookie');
+    if (!acceptedCookie || acceptedCookie !== 'true') {
+        var cookieCard = document.getElementById('cookieCard');
+        fadeIn(cookieCard, 500);
+    }
+}, 500);
+
+document.getElementById('acceptButton').addEventListener('click', function () {
+    setCookie('acceptedCookie', 'true', 30);
+    hideCookieNotice();
+});
+// Final de aceitação de cookies
+ </script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+
+</html>
